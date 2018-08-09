@@ -13,9 +13,12 @@ def add_student_route():
 	    	print('You just made a POST request')
 	    	student_name = request.form["student_name"]
 	    	student_year = request.form["year"]
-	    	add_student(student_name, student_year, True)
+	    	new_student = add_student(student_name, student_year, True)
 	    	print(query_all())
-	    return render_template('add.html')
+	    	return render_template('student.html', student=new_student)
+	    else:
+	    	return render_template('add.html')
+	    
 
 @app.route('/student/<int:student_id>')
 def display_student(student_id):
